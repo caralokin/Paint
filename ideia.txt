@@ -1,0 +1,51 @@
+biblioteca janela
+	define
+		tamanho_barra_ferramentas = 60
+		tamanho_status = 20
+	estrutura tipo_janela
+		CORES cor_anterior
+		COORD tamanho_fonte
+		COORD tamanho_anterior
+		COORD tamanho_maximo
+		COORD tamanho_area_desenho
+	
+	funcoes
+		tipo_janela obtem_dados_janela()
+		void redimensiona_janela(tipo_janela janela, int opcao)
+		void desenha_layout(tipo_janela janela)
+		void verifica_nome(char nome[])
+fim
+
+biblioteca ferramentas
+	define
+		tamanho_paleta = 20
+		tamanho_icone = 32
+		
+	estrutura tipo_ferramentas
+		COORD posicao_padrao
+		COORD posicao_personalizada
+		COLORREF paleta_padrao[20]
+		COLORREF paleta_personalizada[10]
+		COORD posicao_icone_abrir
+		COORD posicao_icone_salvar
+		COLORREF icone_abrir[32][32]
+		COLORREF icone_salvar[32][32]
+	
+	funcoes
+		tipo_ferramenta inicia_ferramentas(tipo_janela janela)
+		void desenha_ferramentas(tipo_ferramentas ferramenta)
+		void cor_selecionada(tipo_pincel pincel)
+		void adiciona_cor(tipo_ferramentas *ferramenta)
+		void quadrado(COORD posicao, COLORREF cor, int tamanho)
+		
+biblioteca pincel
+	estrutura tipo_pincel
+		COORD posicao
+		COLORREF cor
+		int tamanho
+		int estado
+	
+	funcoes
+		void redimensiona(tipo_pincel *pincel, int opcao)
+		void movimenta(tipo_pincel *pincel, int opcao)
+		void status(tipo_pincel pincel)
