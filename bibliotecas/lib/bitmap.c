@@ -12,8 +12,10 @@ int abrir_imagem(char nome[], tipo_janela janela)
     RGBTRIPLE cor;
 
     FILE *imagem;
-    int linha, coluna;
+    int linha, coluna, i;
 	int h,v, ajuste;
+	
+	strcat(nome, ".bmp");
    imagem = fopen(nome, "ab+"); 
 
 

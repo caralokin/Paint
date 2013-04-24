@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	janela = obtem_dados_janela();
 	ferramentas = inicia_ferramentas(janela);
 	redimensiona_janela(janela, 1);
-	/*desenha_layout(janela);*/
+	desenha_layout(janela);
 	desenha_ferramentas(janela,ferramentas);
 	executa_pbrush(janela,ferramentas);
 	redimensiona_janela(janela, 2);

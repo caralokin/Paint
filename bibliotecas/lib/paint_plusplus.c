@@ -39,6 +39,7 @@ void le_entrada_teclado(char leitura[], int posicao_x, int posicao_y)
  
 				{
 				leitura[pos]=entrada.teclado.codigo_tecla; /*passando a tecla lida para a string*/
+				leitura[pos] = tolower(leitura[pos]);
 				printf("%c",leitura[pos]); /*imprimindo a tecla para o usuario ver*/
 				posicao_x++; /*repossicionando o cursor uma posicao a frente da que foi impressa na tela*/
 				pos++; /*atualizando a variavel de controle da string*/
@@ -94,7 +95,7 @@ void verifica_status_pincel(tipo_janela janela,tipo_pincel pincel)
 void verifica_mouse(int x, int y, tipo_janela janela, tipo_ferramentas ferramentas, tipo_pincel *pincel)
 {
 	/*declaraçao e inicializacao das variavel*/
-	char edita[20], *aux;
+	char edita[20], *aux, imagem[50];
 	int espaco, /*variavel que tem o tamanho do quadro das paletas*/
 	rgb[3], /*onde sera salva os valores da nova cor RGB*/
 	cont=0; /*variavel que controla a posicao do vetor rgb*/
@@ -103,11 +104,17 @@ void verifica_mouse(int x, int y, tipo_janela janela, tipo_ferramentas ferrament
 	
 			if(x>25 && x<25+35 && y>10 && y<10+35  ) /*verifica se esta clicando no icone salvar*/
 		{
-			salvar_imagem("imagem2.bmp", janela);
+			gotoxy(20, 20);
+			printf("Nome: ");
+			le_entrada_teclado(imagem, 28, 20);
+			salvar_imagem(imagem, janela);
 		}
 			if(x>70 && x<70+35 && y>10 && y<10+35 ) /*verifica se esta clicando no icone abrir*/
 		{
-			abrir_imagem("imagem.bmp", janela);
+			gotoxy(10, 2);
+			printf("Nome: ");
+			le_entrada_teclado(imagem, 18, 2);
+			abrir_imagem(imagem, janela);
 		}
 			if(x>ferramentas.posicao_edita_cor.X && x<ferramentas.posicao_edita_cor.X+30 && /*verifica se esta clicando no icone editar cor*/
 			y>ferramentas.posicao_edita_cor.Y && y<ferramentas.posicao_edita_cor.Y+35 ) 
